@@ -11,7 +11,7 @@
         <ComboBox Name="comboBox2" HorizontalAlignment="Left" Margin="220,82,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged"/>
         <ComboBox Name="comboBox3" HorizontalAlignment="Left" Margin="400,82,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged"/>
         <ComboBox Name="comboBox4" HorizontalAlignment="Left" Margin="580,82,0,0" VerticalAlignment="Top" Width="180" SelectionChanged="ComboBox_SelectionChanged"/>
-        <Button Content="Button" HorizontalAlignment="Center" Margin="0,322,0,0" VerticalAlignment="Top" Height="40" Width="120"/>
+        <Button Content="Check Code" HorizontalAlignment="Center" Margin="0,322,0,0" VerticalAlignment="Top" Height="40" Width="120" Click="CheckButton_Click"/>
         <Label Name="label1" Content="" HorizontalAlignment="Left" Margin="40,104,0,0" VerticalAlignment="Top" Height="180" Width="180"/>
         <Label Name="label2" Content="" HorizontalAlignment="Left" Margin="220,104,0,0" VerticalAlignment="Top" Height="180" Width="180"/>
         <Label Name="label3" Content="" HorizontalAlignment="Left" Margin="400,104,0,0" VerticalAlignment="Top" Height="180" Width="180"/>

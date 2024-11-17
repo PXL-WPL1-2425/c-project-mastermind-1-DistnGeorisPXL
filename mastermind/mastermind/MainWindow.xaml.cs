@@ -20,6 +20,9 @@ namespace mastermind
 
         // Beschikbare kleuren
         List<string> kleuren = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
+
+        // Lijst voor de gegenereerde code
+        List<string> secretCode = new List<string>();
         public MainWindow()
         {
             InitializeComponent();
@@ -31,9 +34,6 @@ namespace mastermind
         // Methode om de willekeurige code te genereren
         private void GenerateRandomCode()
         {
-
-            // Lijst voor de gegenereerde code
-            List<string> secretCode = new List<string>();
 
             // Random object voor willekeurige getallen
             Random random = new Random();
@@ -113,6 +113,88 @@ namespace mastermind
                     break;
                 default:
                     label.Background = System.Windows.Media.Brushes.Transparent; // Als er geen kleur is geselecteerd
+                    break;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // Event handler voor het klikken op de Check Code knop
+        private void CheckButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Haal de ingevoerde kleuren uit de ComboBoxen
+            List<string> userInput = new List<string>
+            {
+                comboBox1.SelectedItem?.ToString(),
+                comboBox2.SelectedItem?.ToString(),
+                comboBox3.SelectedItem?.ToString(),
+                comboBox4.SelectedItem?.ToString()
+            };
+
+            // Controleer of de gebruiker een waarde heeft geselecteerd in elke ComboBox
+            if (userInput.Contains(null))
+            {
+                MessageBox.Show("Please select a color for all boxes.");
+                return;
+            }
+
+            // Vergelijk de ingevoerde code met de geheime code
+            for (int i = 0; i < 4; i++)
+            {
+                // Als de kleur op de juiste plaats staat (Rood)
+                if (userInput[i] == secretCode[i])
+                {
+                    SetLabelBorder(i, Colors.DarkRed); // Rode rand voor correcte positie
+                }
+                else if (secretCode.Contains(userInput[i]))
+                {
+                    SetLabelBorder(i, Colors.Wheat); // Witte rand voor correcte kleur maar verkeerde positie
+                }
+                else
+                {
+                    SetLabelBorder(i, Colors.Transparent); // Geen rand als de kleur niet in de code zit
+                }
+            }
+        }
+
+        // Methode om de rand van het label in te stellen
+        private void SetLabelBorder(int index, Color borderColor)
+        {
+            switch (index)
+            {
+                case 0:
+                    label1.BorderBrush = new SolidColorBrush(borderColor);
+                    label1.BorderThickness = new Thickness(2);
+                    break;
+                case 1:
+                    label2.BorderBrush = new SolidColorBrush(borderColor);
+                    label2.BorderThickness = new Thickness(2);
+                    break;
+                case 2:
+                    label3.BorderBrush = new SolidColorBrush(borderColor);
+                    label3.BorderThickness = new Thickness(2);
+                    break;
+                case 3:
+                    label4.BorderBrush = new SolidColorBrush(borderColor);
+                    label4.BorderThickness = new Thickness(2);
                     break;
             }
         }
