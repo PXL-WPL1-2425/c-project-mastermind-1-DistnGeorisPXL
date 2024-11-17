@@ -19,6 +19,31 @@ namespace mastermind
         public MainWindow()
         {
             InitializeComponent();
+            GenerateRandomCode(); // Genereer en toon de random code in de titel
         }
+
+
+        // Methode om de willekeurige code te genereren
+        private void GenerateRandomCode()
+        {
+            // Beschikbare kleuren
+            List<string> kleuren = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
+
+            // Lijst voor de gegenereerde code
+            List<string> secretCode = new List<string>();
+
+            // Random object voor willekeurige getallen
+            Random random = new Random();
+
+            // Genereer een willekeurige code van 4 kleuren
+            for (int i = 0; i < 4; i++)
+            {
+                secretCode.Add(kleuren[random.Next(kleuren.Count)]);
+            }
+
+            // Zet de code in de titel van het window voor testdoeleinden
+            this.Title = "Mastermind - Secret Code: " + string.Join(", ", secretCode);
+        }
+
     }
 }
