@@ -16,9 +16,13 @@ namespace mastermind
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        // Beschikbare kleuren
+        List<string> kleuren = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
         public MainWindow()
         {
             InitializeComponent();
+            VulComboBoxen(); // Vul de comboboxen met de kleuren
             GenerateRandomCode(); // Genereer en toon de random code in de titel
         }
 
@@ -26,8 +30,6 @@ namespace mastermind
         // Methode om de willekeurige code te genereren
         private void GenerateRandomCode()
         {
-            // Beschikbare kleuren
-            List<string> kleuren = new List<string> { "Rood", "Geel", "Oranje", "Wit", "Groen", "Blauw" };
 
             // Lijst voor de gegenereerde code
             List<string> secretCode = new List<string>();
@@ -43,6 +45,13 @@ namespace mastermind
 
             // Zet de code in de titel van het window voor testdoeleinden
             this.Title = "Mastermind - Secret Code: " + string.Join(", ", secretCode);
+        }
+        private void VulComboBoxen()
+        {
+            comboBox1.ItemsSource = kleuren;
+            comboBox2.ItemsSource = kleuren;
+            comboBox3.ItemsSource = kleuren;
+            comboBox4.ItemsSource = kleuren;
         }
 
     }
