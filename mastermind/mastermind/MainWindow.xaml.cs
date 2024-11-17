@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Reflection.Emit;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -53,6 +54,69 @@ namespace mastermind
             comboBox3.ItemsSource = kleuren;
             comboBox4.ItemsSource = kleuren;
         }
+
+
+
+
+
+
+
+
+
+
+
+        // Event handler voor de selectie van een kleur in de ComboBox
+        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+            // Controleer welke ComboBox is geselecteerd en werk het juiste Label bij
+            if (sender == comboBox1)
+            {
+                UpdateLabelColor(label1, comboBox1.SelectedItem.ToString());
+            }
+            else if (sender == comboBox2)
+            {
+                UpdateLabelColor(label2, comboBox2.SelectedItem.ToString());
+            }
+            else if (sender == comboBox3)
+            {
+                UpdateLabelColor(label3, comboBox3.SelectedItem.ToString());
+            }
+            else if (sender == comboBox4)
+            {
+                UpdateLabelColor(label4, comboBox4.SelectedItem.ToString());
+            }
+        }
+
+        // Methode om de achtergrondkleur van een label bij te werken
+        private void UpdateLabelColor(System.Windows.Controls.Label label, string colorName)
+        {
+            // Zet de achtergrondkleur van het label op basis van de geselecteerde kleur
+            switch (colorName)
+            {
+                case "Rood":
+                    label.Background = System.Windows.Media.Brushes.Red;
+                    break;
+                case "Geel":
+                    label.Background = System.Windows.Media.Brushes.Yellow;
+                    break;
+                case "Oranje":
+                    label.Background = System.Windows.Media.Brushes.Orange;
+                    break;
+                case "Wit":
+                    label.Background = System.Windows.Media.Brushes.White;
+                    break;
+                case "Groen":
+                    label.Background = System.Windows.Media.Brushes.Green;
+                    break;
+                case "Blauw":
+                    label.Background = System.Windows.Media.Brushes.Blue;
+                    break;
+                default:
+                    label.Background = System.Windows.Media.Brushes.Transparent; // Als er geen kleur is geselecteerd
+                    break;
+            }
+        }
+
 
     }
 }
